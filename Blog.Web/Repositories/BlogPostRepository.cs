@@ -34,7 +34,14 @@ namespace Blog.Web.Repositories
 
         public async Task<IEnumerable<BlogPost>> GetAllAsync()
         {
+            
             return await blogDbContext.BlogPosts.Include(x => x.Tags).ToListAsync();
+        }
+
+        public async Task<IEnumerable<BlogPost>> GetAllHomeAsync()
+        {
+            var blogs = await blogDbContext.BlogPosts.Include(x => x.Tags).ToListAsync();
+            return blogs.OrderByDescending(x => x.PublishedDate);
         }
 
         public async Task<BlogPost?> GetAsync(Guid id)

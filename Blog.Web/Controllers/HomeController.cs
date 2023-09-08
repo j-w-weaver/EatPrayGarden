@@ -23,7 +23,7 @@ namespace Blog.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var blogPosts = await blogPostRepository.GetAllAsync();
+            var blogPosts = await blogPostRepository.GetAllHomeAsync();
 
             // get all tags
             var tags = await tagRepository.GetAllAsync();
