@@ -4,12 +4,16 @@
     ViewData["Title"] = "Eat Pray Garden";
 }
 
+<style>
+    
+</style>
+
 <div class="container col-xxl-8 px-4 py-5">
-    <div class="row align-items-center g-5 py-5">
+    <div class="row align-items-center g-5 hero-section">
         <div class="col-12 col-lg-6">
-            <h1 class="display-5 fw-bold lh-1 mb-3">
-                <i style="font-weight: 400;">Eat Pray Garden</i><span style="font-weight: 300;"><br />Blogs Vlogs and Everything in Between</span>
-            </h1>
+            <h2 class="display-5 fw-bold lh-1 mb-3">
+                @* <i style="font-weight: 400;">Eat Pray Garden</i> *@<span style="font-weight: 300;"><br />Blogs Vlogs and Everything in Between</span>
+            </h2>
             <p class="lead">
                 The intended direction of Eat Pray Garden is to be a happy place 
                 for all plant lovers, moms, dads, dogs etc. Like or comment on any 
@@ -17,8 +21,8 @@
             </p>
         </div>
 
-        <div class="col-12 col-lg-6">
-            <img class="d-block mx-lg-auto img-fluid" @* style="width: 40em;"  *@src="https://st.hzcdn.com/simgs/pictures/landscapes/raised-bed-vegetable-garden-earth-mama-landscape-design-img~8841e509013f3a92_14-0881-1-8713ed3.jpg" alt="" />
+        <div class="col-12 col-lg-6 homepage-img">
+            <img class="d-block mx-lg-auto img-fluid" @* style="width: 40em;" *@src="/homepage-img.JPG" alt="" />
         </div>
     </div>
 </div>
@@ -41,9 +45,11 @@
     </div>
 </div> *@
 
+<hr style="color: #f0f0f0;"/>
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-6">
+    <div class="row justify-content-center blogs-home-container">
+        <div class="col-md-6">
             
             @if(Model != null && Model.BlogPosts.Any())
             {

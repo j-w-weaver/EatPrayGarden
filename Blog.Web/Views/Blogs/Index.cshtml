@@ -8,52 +8,66 @@
 }
 
 
-<div class="container my-5">
+<div class="container" style="padding-top: 6em;">
     <div class="row justify-content-center pt-5">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-8">
 
             @if (Model != null)
             {
                 <h1 class="mb-3">@Model.Heading</h1>
 
-                <div class="d-flex justify-content-between mb-3">
+                @* <div class="d-flex justify-content-between mb-3">
                     <span class="text-secondary">By: @Model.Author</span>
                     <span class="text-secondary">@Model.PublishedDate.Date.ToShortDateString()</span>
-                </div>
+                </div> *@
 
-                <div class="mb-3">
+                <div class="mb-3 d-flex justify-content-between">
                     @if (signInManager.IsSignedIn(User))
                     {
                         @if (Model.Liked)
                         {
                             <a style="cursor: pointer;">
                                 <i class="bi bi-hand-thumbs-up-fill"></i>
+                                <span id="totalLikes">@Model.TotalLikes&nbsp;Likes</span>
                             </a>
+                            
                         }
                         else
                         {
                             <a id="btnLike" style="cursor: pointer;">
                                 <i class="bi bi-hand-thumbs-up"></i>
+                                <span id="totalLikes">@Model.TotalLikes&nbsp;Likes</span>
                             </a>
+                            
                         }
-                      
+                        <span class="text-secondary">@Model.PublishedDate.Date.ToShortDateString()</span>
                     }
-
-                    <span id="totalLikes">@Model.TotalLikes</span> Likes
-                </div>
-
-                <div class="mb-3 d-flex">
-                    @foreach (var tag in Model.Tags)
+                    else
                     {
-                        <span class="badge bg-secondary me-1">@tag.Name</span>
+                        <span id="totalLikes">@Model.TotalLikes&nbsp;Likes</span>
+                        <span class="text-secondary">@Model.PublishedDate.Date.ToShortDateString()</span>
                     }
+                    
+
+                    @* <span id="totalLikes">@Model.TotalLikes</span> Likes *@
+
                 </div>
+
+                
 
                 <img src="@Model.FeaturedImageUrl" class="d-block img-fluid mb-5"/>
 
-                <div class="mb-3 blog-details-content">
+                <div class="mb-3 blog-details-content" style="background-color: white; border: 2em solid white;">
                     @Html.Raw(@Model.Content)
+                    <div class="mb-3 d-flex" style="margin-top: 2em;">
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <span class="badge bg-secondary me-1">@tag.Name</span>
+                        }
+                    </div>
                 </div>
+
+                
 
                 <div class="card blog-comment-container">
                     <div class="card-header">

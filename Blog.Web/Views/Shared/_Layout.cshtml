@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Blog.Web.styles.css" asp-append-version="true" />
+    <link rel="icon" href="@Url.Content("https://postcardsplus.com/images/newfavicon.ico")" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://postcardsplus.com/images/newfavicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
@@ -17,16 +19,20 @@
         .dropdown-item:hover {
             /* background-color: #3A3B3C; */
         }
+        .btn-login {
+            box-shadow: none !important;
+            outline: none !important;       
+        }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm fixed-top navbar-toggleable-sm navbar-dark bg-light border-bottom box-shadow">
+        <nav class="navbar navbar-expand-sm fixed-top navbar-toggleable-sm navbar-dark  border-bottom box-shadow">
             <div class="container">
-                <a class="navbar-brand text-dark" asp-area="" asp-controller="Home" asp-action="Index">Eat Pray Garden</a>
-                <button class="navbar-toggler text-dark" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand text-dark logo-anchor" asp-area="" asp-controller="Home" asp-action="Index"><span><img class="logo" src="/epg_logo.png" /></span></a>
+                <button class="navbar-toggler text-dark hamburger" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon" style="background-color: #fff0f3;"></span>
+                    <span class="navbar-toggler-icon" style="background-color: #ffe2e8"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
@@ -52,48 +58,48 @@
                         @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown my-sm-0">
-                                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle text-dark btn-login" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Admin
                                 </a>
                                 <ul class="dropdown-menu bg-light hover-light">
                                     <li>
-                                        <a class="dropdown-item text-dark hover-light"
-                                           asp-area=""
-                                           asp-controller="AdminTags"
-                                           asp-action="Add">
-                                            Add Tag
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-dark hover-light"
-                                           asp-area=""
-                                           asp-controller="AdminTags"
-                                           asp-action="List">
-                                            Show All Tags
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item text-dark hover-light"
+                                        <a class="dropdown-item text-dark hover-light btn-login"
                                            asp-area=""
                                            asp-controller="AdminBlogPosts"
                                            asp-action="Add">
-                                            Add Blog Post
+                                            Add Blog Post&nbsp;&nbsp;&#9734;
                                         </a>
                                     </li>
-                                     <li>
-                                        <a class="dropdown-item text-dark hover-light"
+                                    <li>
+                                        <a class="dropdown-item text-dark hover-light btn-login"
                                            asp-area=""
                                            asp-controller="AdminBlogPosts"
                                            asp-action="List">
-                                            All Blog Post
+                                            View/Edit Blog Posts
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item text-dark hover-light btn-login"
+                                           asp-area=""
+                                           asp-controller="AdminTags"
+                                           asp-action="Add">
+                                            Add New Tag
+                                        </a>
+                                    </li>                              
+                                    <li>
+                                        <a class="dropdown-item text-dark hover-light btn-login"
+                                           asp-area=""
+                                           asp-controller="AdminTags"
+                                           asp-action="List">
+                                            View Tags
                                         </a>
                                     </li> 
                                     <li>
-                                        <a class="dropdown-item text-dark hover-light"
+                                        <a class="dropdown-item text-dark hover-light btn-login"
                                            asp-area=""
                                            asp-controller="AdminUsers"
                                            asp-action="List">
-                                            All Users
+                                            View Users
                                         </a>
                                     </li>
                                 </ul>
@@ -103,7 +109,7 @@
                         
                     </ul>
 
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center" >
 
                         @if (signInManager.IsSignedIn(User))
                         {
@@ -111,7 +117,7 @@
                                 Welcome,&nbsp;@User?.Identity?.Name
                             </div>
 
-                            <a class="btn me-3 bg-light text-dark"
+                            <a class="btn btn-login me-3 text-dark"
                                asp-area=""
                                asp-controller="Account"
                                asp-action="Logout">
@@ -120,18 +126,18 @@
                         }
                         else
                         {
-                            <a class="btn me-3 bg-light text-dark"
+                            <a class="btn btn-login me-3 text-dark"
                                asp-area=""
                                asp-controller="Account"
                                asp-action="Login">
                                 Login
                             </a>
 
-                            <a class="btn me-3 bg-light text-dark"
+                            <a class="btn btn-login me-3 text-dark"
                                asp-area=""
                                asp-controller="Account"
                                asp-action="Register">
-                                Register
+                                Join
                             </a>
                         }                       
                     </div>
@@ -140,7 +146,7 @@
         </nav>
     </header>
     <div>
-        <main role="main" class="pb-3" style="background-color: #fff3f5;">
+        <main role="main" class="pb-3" style="background-color: #fff1f3;">
             @RenderBody()
         </main>
     </div>
