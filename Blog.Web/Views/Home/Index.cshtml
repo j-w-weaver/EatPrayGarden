@@ -4,20 +4,18 @@
     ViewData["Title"] = "Eat Pray Garden";
 }
 
-<style>
-    
-</style>
+<meta name="description" content="Welcome to Eat Pray Garden, home to all things plants, love, and life."/>
 
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-5 hero-section">
         <div class="col-12 col-lg-6">
             <h2 class="display-5 fw-bold lh-1 mb-3">
-                @* <i style="font-weight: 400;">Eat Pray Garden</i> *@<span style="font-weight: 300;"><br />Blogs Vlogs and Everything in Between</span>
+                @* <i style="font-weight: 400;">Eat Pray Garden</i> *@<span style="font-weight: 300;"><br />Living the Clean Life</span>
             </h2>
-            <p class="lead">
-                The intended direction of Eat Pray Garden is to be a happy place 
-                for all plant lovers, moms, dads, dogs etc. Like or comment on any 
-                post your heart desires, I'd love to hear from you.
+            <p class="lead" style="font-size: 1.2em;">
+                Bringing you nutrient-dense information to satiate your hunger
+                for truth and clarity.
+                Feed your mind, body, and soul. Maybe even your pet!
             </p>
         </div>
 
@@ -27,26 +25,6 @@
     </div>
 </div>
 
-@* <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-6 d-flex">
-
-            @if (Model != null)
-            {
-                @foreach (var tag in Model.Tags)
-                {
-                    <span class="badge bg-dark me-1">
-                        @tag.Name
-                    </span>
-                }
-            }
-
-        </div>
-    </div>
-</div> *@
-
-<hr style="color: #f0f0f0;"/>
-
 <div class="container">
     <div class="row justify-content-center blogs-home-container">
         <div class="col-md-6">
@@ -55,7 +33,7 @@
             {
                 foreach (var blogPost in Model.BlogPosts)
                 {
-                    <div class="mb-5 bg-light box-shadow p-4 rounded-2">
+                    <div class="mb-5 bg-light box-shadow p-4 rounded-2 photo">
                         <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading"
                             class="mb-2 d-block img-fluid">
                         <h2 class="mb-4">@blogPost.Heading</h2>
