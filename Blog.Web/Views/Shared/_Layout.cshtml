@@ -16,6 +16,9 @@
     <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
     <style>
+        body {
+            background-color: #fff1f3;
+        }
         .dropdown-item:hover {
             /* background-color: #3A3B3C; */
         }
@@ -34,10 +37,40 @@
         .admin-pre-drop {
             margin-right: 2em;
         }
+
+        .sidebar {
+            height: 45%;
+            width: 160px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: peachpuff;
+            overflow-x: hidden;
+            margin-top: 14em;
+            padding-top: 20px;
+            border-radius: 10px 0 0 10px;
+            
+        }
+
+            .sidebar a {
+                padding: 10px;
+                text-decoration: none;
+                font-size: 16px;
+                display: block;
+            }
+
+                .sidebar a:hover {
+                    color: #f1f1f1;
+                }
+
+        .sidebar-link {
+            list-style: none;
+        }
     </style>
 </head>
 <body>
-    <header>
+    <header class="mb-5">
         <nav class="navbar navbar-expand-xxxl fixed-top navbar-toggleable-xxxl navbar-dark  border-bottom box-shadow">
             <div class="container">
                 <a class="navbar-brand text-dark logo-anchor" asp-area="" asp-controller="Home" asp-action="Index"><span><img class="logo" src="/epg_logo.png" /></span></a>
@@ -156,8 +189,16 @@
             </div>
         </nav>
     </header>
-    <div>
+    <div class="container">
         <main role="main" class="pb-3" style="background-color: #fff1f3;">
+            @* <div>
+                <div class="sidebar">
+                    <p style="text-align: center;"><i>Quick Links&nbsp;</i></p>
+                    <a class="text-dark" href="https://www.google.com">&#9734;&nbsp;<i>Scratch Kitchen&nbsp;</i></a>
+                    <a class="text-dark" href="https://www.google.com">&#9734;&nbsp;<i>Low Carb&nbsp;</i></a>
+                    <a class="text-dark" href="https://www.google.com">&#9734;&nbsp;<i>Healthy Holiday&nbsp;</i></a>
+                </div>
+            </div> *@
             @RenderBody()
         </main>
     </div>
