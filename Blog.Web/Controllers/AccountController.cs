@@ -44,7 +44,18 @@ namespace Blog.Web.Controllers
                     if (roleIdentityResult.Succeeded)
                     {
                         // show success notification
-                        return RedirectToAction("Register");
+                        //return RedirectToAction("Register");
+                        var signInResult = await signInManager.PasswordSignInAsync(registerViewModel.UserName, registerViewModel.Password, true, false);
+
+                        if (signInResult.Succeeded && signInResult != null)
+                        {
+                            // show successful
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
+                    else
+                    {
+                        return View();
                     }
                 }
             }           
