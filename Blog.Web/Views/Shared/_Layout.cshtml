@@ -32,7 +32,7 @@
             align-items: flex-end;
         }
         .admin-drop {
-            margin-left: 7.2em;
+            margin-left: 10.2em;
         }
         .admin-pre-drop {
             margin-right: 2em;
@@ -67,6 +67,11 @@
         .sidebar-link {
             list-style: none;
         }
+
+        .welcome-label {
+            align-self: flex-end;
+            padding-bottom: 1em;
+        }
     </style>
 </head>
 <body>
@@ -90,14 +95,15 @@
                             <a class="nav-link text-dark" 
                                 asp-area="" 
                                 asp-controller="Home" 
-                                asp-action="Index">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" 
-                                asp-area="" 
-                                asp-controller="Home" 
                                 asp-action="Index">Store</a>
                         </li>  *@
+
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <div class="text-dark welcome-label">
+                                Welcome,&nbsp;@User?.Identity?.Name
+                            </div>
+                        }
 
                         @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                         {
@@ -157,9 +163,6 @@
 
                         @if (signInManager.IsSignedIn(User))
                         {
-                            <div class="me-3 text-dark">
-                                Welcome,&nbsp;@User?.Identity?.Name
-                            </div>
 
                             <a class="btn btn-login me-3 text-dark"
                                asp-area=""

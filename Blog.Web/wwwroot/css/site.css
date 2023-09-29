@@ -126,4 +126,9 @@ nav {
     .photo:before {
         left: 12em;
     }
+
+    .hero-section {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }

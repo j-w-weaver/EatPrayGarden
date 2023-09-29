@@ -17,40 +17,27 @@
             {
                 <h1 class="mb-3">@Model.Heading</h1>
 
-                @* <div class="d-flex justify-content-between mb-3">
-                    <span class="text-secondary">By: @Model.Author</span>
-                    <span class="text-secondary">@Model.PublishedDate.Date.ToShortDateString()</span>
-                </div> *@
-
                 <div class="mb-3 d-flex justify-content-between">
-                    @if (signInManager.IsSignedIn(User))
-                    {
-                        @if (Model.Liked)
+                    <div class="mb-3">
+                        @if (signInManager.IsSignedIn(User))
                         {
-                            <a style="cursor: pointer;">
-                                <i class="bi bi-hand-thumbs-up-fill"></i>
-                                <span id="totalLikes">@Model.TotalLikes&nbsp;Likes</span>
-                            </a>
-                            
+                            if (Model.Liked)
+                            {
+                                <a style="cursor: pointer;">
+                                    <i class="bi bi-hand-thumbs-up-fill"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <a id="btnLike" style="cursor: pointer;">
+                                    <i class="bi bi-hand-thumbs-up"></i>
+                                </a>
+                            }
                         }
-                        else
-                        {
-                            <a id="btnLike" style="cursor: pointer;">
-                                <i class="bi bi-hand-thumbs-up"></i>
-                                <span id="totalLikes">@Model.TotalLikes&nbsp;Likes</span>
-                            </a>
-                            
-                        }
-                        <span class="text-secondary">@Model.PublishedDate.Date.ToShortDateString()</span>
-                    }
-                    else
-                    {
-                        <span id="totalLikes">@Model.TotalLikes&nbsp;Likes</span>
-                        <span class="text-secondary">@Model.PublishedDate.Date.ToShortDateString()</span>
-                    }
-                    
 
-                    @* <span id="totalLikes">@Model.TotalLikes</span> Likes *@
+                        <span id="totalLikes">@Model.TotalLikes</span> likes
+                    </div>
+                    <span class="text-dark">@Model.PublishedDate.ToShortDateString()</span>
 
                 </div>
 

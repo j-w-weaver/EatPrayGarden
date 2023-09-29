@@ -6,6 +6,14 @@
 
 <meta name="description" content="Welcome to Eat Pray Garden, home to all things plants, love, and life."/>
 
+<style>
+    .blog-card,
+    .blog-card:hover {
+        text-decoration: none;
+        color: #212529;
+    }
+</style>
+
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-5 hero-section">
         <div class="col-12 col-lg-6">
@@ -20,10 +28,11 @@
         </div>
 
         <div class="col-12 col-lg-6 homepage-img">
-            <img class="d-block mx-lg-auto img-fluid" @* style="width: 40em;" *@src="/img/homey-img.JPG" alt="" />
+            <img class="d-block mx-lg-auto img-fluid" src="/images/homey-img.JPG" alt="" />
         </div>
     </div>
 </div>
+
 
 <div class="container">
     <div class="row justify-content-center blogs-home-container">
@@ -33,37 +42,42 @@
             {
                 foreach (var blogPost in Model.BlogPosts)
                 {
-                    <div class="mb-5 bg-light box-shadow p-4 rounded-2 photo">
-                        <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading"
-                            class="mb-2 d-block img-fluid">
-                        <h2 class="mb-4">@blogPost.Heading</h2>
-                        <p class="mb-3">
-                            Author: @blogPost.Author
-                            <br>
-                            Published Date: @blogPost.PublishedDate.ToShortDateString()
-                        </p>
+                    <a class="blog-card" asp-area="" 
+                        asp-controller="Blogs" 
+                        asp-action="Index" 
+                        asp-route-urlHandle="@blogPost.UrlHandle">
 
-                        <div class="mb-3">
-                            
+                        <div class="mb-5 bg-light box-shadow p-4 rounded-2 photo">
+                            <img src="@blogPost.FeaturedImageUrl" alt="@blogPost.Heading"
+                                 class="mb-2 d-block img-fluid">
+                            <h2 class="mb-4">@blogPost.Heading</h2>
+                            <p class="mb-3">
+                                Author: @blogPost.Author
+                                <br>
+                                Published Date: @blogPost.PublishedDate.ToShortDateString()
+                            </p>
+
+                            <div class="mb-3">
+                            </div>
+
+                            <p class="mb-3">
+                                @foreach (var tag in blogPost.Tags)
+                                {
+                                    <span class="badge bg-secondary me-1">@tag.Name</span>
+                                }
+                            </p>
+
+                            <p class="mb-3">@blogPost.ShortDescription</p>
+
+                            <a class="btn btn-dark"
+                               asp-area=""
+                               asp-controller="Blogs"
+                               asp-action="Index"
+                               asp-route-urlHandle="@blogPost.UrlHandle">
+                                Read More &rarr;
+                            </a>
                         </div>
-
-                        <p class="mb-3">
-                            @foreach (var tag in blogPost.Tags)
-                            {
-                                <span class="badge bg-secondary me-1">@tag.Name</span>
-                            }
-                        </p>
-
-                        <p class="mb-3">@blogPost.ShortDescription</p>
-
-                        <a class="btn btn-dark" 
-                            asp-area="" 
-                            asp-controller="Blogs"
-                            asp-action="Index"
-                            asp-route-urlHandle="@blogPost.UrlHandle">
-                            Read More &rarr;
-                        </a>
-                    </div>
+                    </a>
                 }
             }
 
